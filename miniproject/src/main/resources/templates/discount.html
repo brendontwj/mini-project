@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+    <h1>Discounts for <span data-th-text="${GameDiscount.Title}"></span></h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <table>
+                        <tr>
+                            <th>Store ( <span data-th-text="${GameDiscount.currency}"></span> )</th>
+                            <th>Current Price</th>
+                            <th>Regular Price</th>
+                            <th>Price Cut</th>
+                        </tr>
+                        <tr th:each="discount:${GameDiscount.discountArr}">
+                            <td class="shopname"><a th:href="${discount.shopLink}" data-th-text="${discount.shopName}"></a></td>
+                            <td class="prices" data-th-text="${discount.price_new}"></td>
+                            <td class="prices" data-th-text="${discount.price_old}"></td>
+                            <td class="prices" data-th-text="|${discount.price_cut}%|"><span>%</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

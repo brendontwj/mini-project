@@ -1,0 +1,27 @@
+table, th, td {
+    border: 1px solid;
+}
+
+.shopname {
+    font-weight: bold;
+}
+
+.prices {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: darkslategrey;
+}
+
+tr:nth-child(even) {
+    background-color: wheat;
+}
+
+tr:nth-child(odd) {
+    background-color: blanchedalmond;
+}

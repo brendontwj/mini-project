@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" 
+    integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <h1>Select game you want</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div th:each="game:${GamesList.results}">
+                    <ul>
+                        <li>
+                            <p>ID: <span data-th-text="${game.id}"></span></p>
+                            <p>Title: <span data-th-text="${game.title}"></span></p>
+                            <form action="#" method="post" th:object="${GameDiscount}" th:action="@{/discount}">
+                                <input type="hidden" th:value="${game.plainName}" id="plain" name="plain">
+                                <input type="hidden" th:value="${game.title}" id="title" name="title">
+                                <input type="submit" value="Search"/>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
