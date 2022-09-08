@@ -23,7 +23,7 @@ public class GameRedis implements GameRepo {
 
     @Override
     public User findById(String name) {
-        User article = (User) template.opsForValue().get(name);
-        return article;
+        User user = (User) template.opsForValue().get(name);
+        return user;
     }
 }

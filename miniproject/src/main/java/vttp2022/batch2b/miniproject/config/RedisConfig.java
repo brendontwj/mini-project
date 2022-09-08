@@ -32,15 +32,15 @@ public class RedisConfig {
         final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
         config.setHostName(redisHost);
         config.setPort(redisPort.get());
-        String redisPassword = System.getenv("REDIS_PASSWORD");
-        logger.info("redis pw >>>>> " + System.getenv("REDIS_PASSWORD"));
+        String redisPassword = System.getenv("REDIS_PASSWORD2");
+        logger.info("redis pw >>>>> " + System.getenv("REDIS_PASSWORD2"));
         config.setPassword(redisPassword);
         Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer<>(User.class);
         
         final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
         final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
         jedisFac.afterPropertiesSet();
-        logger.info("redis host port > {redistHost} {redisPort}", redisHost, redisPort);
+        logger.info("redis host port > " + redisHost + " " + redisPort);
         RedisTemplate<String, User> template = new RedisTemplate<String, User>();
         template.setConnectionFactory(jedisFac);
         template.setKeySerializer(new StringRedisSerializer());

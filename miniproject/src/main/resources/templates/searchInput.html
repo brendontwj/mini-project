@@ -16,12 +16,24 @@
 
 </head>
 <body>
-    <h1>Search for a game</h1>
-    <form action="#" method="post" th:object="${SearchObject}" th:action="@{/gamesList}">
+    <h1>Welcome, <span data-th-text="${userObj.name}"></span>!</h1>
+    <h3>Search for a game</h3>
+    <form action="#" method="post" th:object="${userObj.search}" th:action="@{/gamesList}">
         <p>
             <input type="text" th:field="*{searchQuery}"/>
             <input type="submit" value="Search"/>
         </p>
+    </form>
+
+    <h3>Click here to see saved favourites</h3>
+    <form action="#" method="post" th:object="${userObj}" th:action="@{/favouritesList}">
+        <p>
+            <input type="submit" value="Favourites"/>
+        </p>
+    </form>
+    <br>
+    <form th:action="@{/}">
+        <input type="submit" value="Back to login">
     </form>
 </body>
 </html>

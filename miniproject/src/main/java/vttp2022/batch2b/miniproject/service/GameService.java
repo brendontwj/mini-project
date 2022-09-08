@@ -29,7 +29,7 @@ public class GameService {
             .build(false)
             .toUriString();
 
-        logger.info("URL is > " + searchDiscountURL);
+        logger.info("Discount URL is > " + searchDiscountURL);
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> resp = null;
 
@@ -53,7 +53,7 @@ public class GameService {
 
         searchPlainsURL.replace("%20", " ");
 
-        logger.info("URL is > " + searchPlainsURL);
+        logger.info("Search URL is > " + searchPlainsURL);
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> resp = null;
 

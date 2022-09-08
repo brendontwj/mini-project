@@ -5,28 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/discount.css}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" 
+    integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>Discounts for <span data-th-text="${GameDiscount.Title}"></span></h1>
+    <h1>Discounts for <span data-th-text="${userObj.discount.Title}"></span></h1>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div>
                     <table>
                         <tr>
-                            <th>Store ( <span data-th-text="${GameDiscount.currency}"></span> )</th>
+                            <th>Store ( <span data-th-text="${userObj.discount.currency}"></span> )</th>
                             <th>Current Price</th>
                             <th>Regular Price</th>
                             <th>Price Cut</th>
                         </tr>
-                        <tr th:each="discount:${GameDiscount.discountArr}">
+                        <tr th:each="discount:${userObj.discount.discountArr}">
                             <td class="shopname"><a th:href="${discount.shopLink}" data-th-text="${discount.shopName}"></a></td>
                             <td class="prices" data-th-text="${discount.price_new}"></td>
                             <td class="prices" data-th-text="${discount.price_old}"></td>
                             <td class="prices" data-th-text="|${discount.price_cut}%|"><span>%</span></td>
                         </tr>
                     </table>
+                    <form action="#" method="post" th:object="${userObj}" th:action="@{/saveToFavourites}">
+                        <p>
+                            <input type="hidden" th:value="*{discount.plain}" id="favouriteName" name="favouriteName">
+                            <input type="hidden" th:value="*{discount.title}" id="favouriteTitle" name="favouriteTitle">
+                            <input type="submit" value="Save to Favourites"/>
+                        </p>
+                    </form>
+                    <form th:action="@{/userLogin}">
+                        <input type="submit" value="Back to Search">
+                    </form>
+                    <br>
+                    <form th:action="@{/}">
+                        <input type="submit" value="Back to login">
+                    </form>
                 </div>
             </div>
         </div>

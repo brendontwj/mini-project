@@ -16,11 +16,11 @@
 
 </head>
 <body>
-    <h1>Select game you want</h1>
+    <h1>List of your favourites, <span data-th-text="${userFavourites.name}"></span>.</h1>
     <div class="container">
         <div class="row">
             <div class="col">
-                <div th:each="game:${userObj.search.results}">
+                <div th:each="game:${userFavourites.favouritesList}">
                     <ul>
                         <li>
                             <p>Title: <span data-th-text="${game.title}"></span></p>
@@ -28,6 +28,10 @@
                                 <input type="hidden" th:value="${game.plainName}" id="plain" name="plain">
                                 <input type="hidden" th:value="${game.title}" id="title" name="title">
                                 <input type="submit" value="Search"/>
+                            </form>
+                            <form action="#" method="post" th:object="${userFavourites}" th:action="@{/deleteFavourite}">
+                                <input type="hidden" th:value="${game.plainName}" id="deleteName" name="deleteName">
+                                <input type="submit" value="Delete"/>
                             </form>
                         </li>
                     </ul>
