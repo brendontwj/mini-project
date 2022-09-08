@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import vttp2022.batch2b.miniproject.model.Game;
@@ -61,6 +62,21 @@ public class GameSearchController {
     @GetMapping("userLogin")
     public String showSearchPageAfterUserCreated(@ModelAttribute User user, Model model) {
         user = wiredUser;
+        model.addAttribute("userObj", user);
+        return "searchInput";
+    }
+
+    @GetMapping("userLogin/{username}")
+    public String pathLogin(@ModelAttribute User user, @PathVariable("username") String username, Model model) {
+        String name = username;
+        User tempUser = redisService.findById(name);
+        if(!(tempUser == null)) {
+            logger.info(tempUser.getFavouritesList().toString());
+            wiredUser = tempUser;
+            user = tempUser;
+        } else {
+            return "noSuchUserError";
+        }
         model.addAttribute("userObj", user);
         return "searchInput";
     }
