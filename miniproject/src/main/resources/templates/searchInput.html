@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Search</title>
+    <link rel="stylesheet" th:href="@{/css/discount.css}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" 
     integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" 
@@ -17,23 +18,19 @@
 </head>
 <body>
     <h1>Welcome, <span data-th-text="${userObj.name}"></span>!</h1>
-    <h3>Search for a game</h3>
-    <form action="#" method="post" th:object="${userObj.search}" th:action="@{/gamesList}">
-        <p>
+    <div class="gamesearch">
+        <h3>Search for a game</h3>
+        <form action="#" method="post" th:object="${userObj.search}" th:action="@{/gamesList}">
             <input type="text" th:field="*{searchQuery}"/>
             <input type="submit" value="Search"/>
-        </p>
-    </form>
-
-    <h3>Click here to see saved favourites</h3>
-    <form action="#" method="post" th:object="${userObj}" th:action="@{/favouritesList}">
-        <p>
+        </form>
+        <br><br>
+        <form th:action="@{/}">
+            <input type="submit" value="Back to login">
+        </form>
+        <form action="#" method="post" th:object="${userObj}" th:action="@{/favouritesList}">
             <input type="submit" value="Favourites"/>
-        </p>
-    </form>
-    <br>
-    <form th:action="@{/}">
-        <input type="submit" value="Back to login">
-    </form>
+        </form>
+    </div>
 </body>
 </html>

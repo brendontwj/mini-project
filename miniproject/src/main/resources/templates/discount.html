@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Discount</title>
     <link rel="stylesheet" th:href="@{/css/discount.css}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" 
@@ -18,38 +18,37 @@
 <body>
     <h1>Discounts for <span data-th-text="${userObj.discount.Title}"></span></h1>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div>
-                    <table>
-                        <tr>
-                            <th>Store ( <span data-th-text="${userObj.discount.currency}"></span> )</th>
-                            <th>Current Price</th>
-                            <th>Regular Price</th>
-                            <th>Price Cut</th>
-                        </tr>
-                        <tr th:each="discount:${userObj.discount.discountArr}">
-                            <td class="shopname"><a th:href="${discount.shopLink}" data-th-text="${discount.shopName}"></a></td>
-                            <td class="prices" data-th-text="${discount.price_new}"></td>
-                            <td class="prices" data-th-text="${discount.price_old}"></td>
-                            <td class="prices" data-th-text="|${discount.price_cut}%|"><span>%</span></td>
-                        </tr>
-                    </table>
-                    <form action="#" method="post" th:object="${userObj}" th:action="@{/saveToFavourites}">
-                        <p>
-                            <input type="hidden" th:value="*{discount.plain}" id="favouriteName" name="favouriteName">
-                            <input type="hidden" th:value="*{discount.title}" id="favouriteTitle" name="favouriteTitle">
-                            <input type="submit" value="Save to Favourites"/>
-                        </p>
-                    </form>
-                    <form th:action="@{/userLogin}">
-                        <input type="submit" value="Back to Search">
-                    </form>
-                    <br>
-                    <form th:action="@{/}">
-                        <input type="submit" value="Back to login">
-                    </form>
-                </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Store ( <span data-th-text="${userObj.discount.currency}"></span> )</th>
+                    <th>Current Price</th>
+                    <th>Regular Price</th>
+                    <th>Price Cut</th>
+                </tr>
+                <tr th:each="discount:${userObj.discount.discountArr}">
+                    <td class="shopname"><a th:href="${discount.shopLink}" data-th-text="${discount.shopName}"></a></td>
+                    <td class="prices" data-th-text="${discount.price_new}"></td>
+                    <td class="prices" data-th-text="${discount.price_old}"></td>
+                    <td class="prices" data-th-text="|${discount.price_cut}%|"><span>%</span></td>
+                </tr>
+            </table>
+
+            <br><br>
+
+            <div class="discountButtons">
+                <form action="#" method="post" th:object="${userObj}" th:action="@{/saveToFavourites}">
+                    <input type="hidden" th:value="*{discount.plain}" id="favouriteName" name="favouriteName">
+                    <input type="hidden" th:value="*{discount.title}" id="favouriteTitle" name="favouriteTitle">
+                    <input type="submit" value="Save to Favourites"/>
+                </form>
+                <form th:action="@{/userLogin}">
+                    <input type="submit" value="Back to Search">
+                </form>
+                <br><br>
+                <form th:action="@{/}">
+                    <input type="submit" value="Back to login">
+                </form>
             </div>
         </div>
     </div>

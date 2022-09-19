@@ -5,14 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/css/discount.css}">
+
 </head>
 <body>
-    <h1>Input user</h1>
-    <form action="#" method="post" th:object="${userObj}" th:action="@{/userLogin}">
-        <p>
-            <input type="text" th:field="*{name}"/>
-            <input type="submit" value="Search"/>
-        </p>
-    </form>
+    <h1>Welcome to this game discount finder!</h1>
+    <div class="login">
+        <form action="#" method="post" th:object="${userObj}" th:action="@{/userLogin}">
+            <p>
+                Enter your name here 
+                <input type="text" th:field="*{name}"/>
+                <input type="submit" value="Search"/>
+            </p>
+        </form>
+    </div>
 </body>
 </html>

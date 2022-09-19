@@ -2,6 +2,11 @@ table, th, td {
     border: 1px solid;
 }
 
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .shopname {
     font-weight: bold;
 }
@@ -24,4 +29,57 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: blanchedalmond;
+}
+
+body {
+    background-color: lightblue;
+}
+
+form {
+    display: inline-block;
+}
+
+h1 {
+    text-align: center;
+}
+
+.login {
+    position: absolute;
+    top: 45%;
+    left: 38%;
+}
+
+.gamesearch {
+    position: absolute;
+    top: 39%;
+    left: 42%;
+    background-color: darkslateblue;
+    color: lightpink;
+    border: 5px solid black;
+}
+
+.gamesearch * {
+    margin: 4px;
+}
+
+.list {
+    width: 35vw;
+    margin: 0 auto;
+}
+
+.list .game {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    background-color: darkslateblue;
+    color: antiquewhite;
+}
+
+.list .game * {
+    margin: 4px;
+}
+
+.discountButtons {
+    width: 35vw;
+    margin: 0 auto;
 }
